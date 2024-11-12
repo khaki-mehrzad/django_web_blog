@@ -1,0 +1,25 @@
+{% extends 'blogs/base.html' %}
+
+{% block page_header %}
+<div class="container">
+  <h1 class="display-4">All Posts</h1>
+</div>
+{% endblock page_header %}
+
+{% block content  %}
+
+<div class="container ">
+  {% for b in blogs %}
+    <div class="card mb-3">
+      <h4 class="card-header">
+        {{b.date_added| date:'M d, Y H:i' }}
+        <small><a href="{% url 'blogs:edit_post' b.id %}">edit post</a></small>
+      </h4>
+      <div class="card-body">
+        {{ b.text| linebreaks }}
+      </div>
+    </div>
+  {% empty %}
+    <p>There is not any post yet.</p>
+  {% endfor %}
+{% endblock content %}

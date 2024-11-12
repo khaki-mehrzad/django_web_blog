@@ -1,0 +1,18 @@
+{% extends 'blogs/base.html' %}
+
+{% block page_header %}
+    <div class="container">
+        <h1 class="display-4">Edit Post</h1>
+    </div>
+{% endblock page_header  %}
+
+
+{% block content %}
+<div class="container">
+    <form action="{% url 'blogs:edit_post' post_id %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button class="btn btn-primary" name="submit">Save changes</button>
+    </form>
+</div>
+{% endblock content %}

@@ -1,0 +1,18 @@
+{% extends 'blogs/base.html' %}
+
+{% block page_header %}
+  <div class="container">
+    <h1 class="display-4">Login page</h1>
+  </div>
+{% endblock page_header %}
+
+{% block content %}
+<div class="container">
+    <form method="post" action="{% url 'users:login'  %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button class="btn btn-primary" name="submit">sign in</button>
+        <input type="hidden" name="next" value="{% url 'blogs:home' %}">
+    </form>
+</div>
+{% endblock content %}

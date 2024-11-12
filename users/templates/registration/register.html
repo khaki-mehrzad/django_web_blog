@@ -1,0 +1,18 @@
+{% extends 'blogs/base.html' %}
+
+{% block page_header %}
+  <div class="container">
+    <h1 class="display-4">Complete register form</h1>
+  </div>
+{% endblock page_header %}
+
+{% block content %}
+<div class="container">
+    <form method="post" action="{% url 'users:register'  %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <butto class="btn btn-primary" name="submit">sign up</butto>
+        <input type="hidden" name="next" value="{% url 'blogs:home' %}">
+    </form>
+</div>
+{% endblock content %}
